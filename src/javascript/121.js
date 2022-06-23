@@ -8,22 +8,16 @@ var maxProfit = function (prices) {
     let buy = 0;
     let sell = 1;
     let profit = 0;
+    let tempProfit = profit;
 
-    if (prices.length < 2) {
-        return 0;
-    }
-
-    for (let i = 0; i < prices.length; i++) {
-        let tempProfit = prices[sell] - prices[buy];
-
-        if (tempProfit <= 0) {
-            buy = i;
-            sell = i + 1;
-        } else if (tempProfit > 0) {
-            sell++;
+    while (buy < prices.length) {
+        if (prices[sell] > prices[buy]) {
+            tempProfit = prices[sell] - prices[buy];
+            profit = tempProfit > profit ? tempProfit : profit;
+        } else {
+            buy = sell;
         }
-
-        profit = tempProfit > profit ? tempProfit : profit;
+        sell++;
     }
 
     return profit;
