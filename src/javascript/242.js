@@ -14,7 +14,7 @@ var isAnagram = function (s, t) {
     const secondStr = t.toLowerCase();
 
     for (let i = 0; i < firstStr.length; i++) {
-        if (/[a-z]/.test(firstStr[i])) {
+        if (firstStr.charCodeAt(i) >= 97 || firstStr.charCodeAt(i) <= 116) {
             obj1[firstStr[i]] = ++obj1[firstStr[i]] || 1;
             obj2[secondStr[i]] = ++obj2[secondStr[i]] || 1;
         }
